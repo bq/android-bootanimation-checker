@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BootAnimationTest</string>
+    <string name="action_help">Help</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="animate">Animate</string>
+    <string name="select_animation">Select animation</string>
+    <string name="help">BootAnimation help</string>
+    <string name="unzipping_message">Unzipping bootanimation.zip</string>
+    <string name="generating_animation">Generating animation</string>
+    
+    <string name="e_unzipping">Error unzipping animation.zip</string>
+    <string name="e_generating">Error generating animation</string>
+
+</resources>

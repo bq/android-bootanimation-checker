@@ -1,0 +1,60 @@
+# built application files
+*.apk
+*.ap_
+*.jar
+
+# lint folder
+lint
+
+# files for the dex VM
+*.dex
+ 
+# Java class files
+*.class
+ 
+# generated files
+bin/
+gen/
+classes/
+gen-external-apklibs/
+
+# maven output folder
+target
+release.properties
+pom.xml.*
+ 
+# Local configuration file (sdk path, etc)
+local.properties
+ 
+# Eclipse project files
+.classpath
+.checkstyle
+.project
+.metadata
+.settings
+.proguard-project.txt
+.project.properties 
+ 
+# IntelliJ files
+.idea
+*.iml
+*.ipr
+*.iws
+
+# vi swap files
+*.swp
+ 
+# backup files
+*.bak
+ 
+# gradle directory
+.gradle
+gradlew
+gradlew.bat
+gradle/
+build/
+
+#other
+.DS_Store
+tmp
+*.out
