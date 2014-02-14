@@ -3,9 +3,7 @@ package com.mundoreader.bootanimationtest.animation;
 public class AnimationPart {
 	
 	private int loops;
-	
 	private int pause;
-	
 	private String folder;
 	
 	public AnimationPart() {}

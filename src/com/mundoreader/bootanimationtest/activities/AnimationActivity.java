@@ -47,14 +47,6 @@ public class AnimationActivity extends Activity implements BootAnimationGenerato
 		bootAnimationImageView = (ImageView) findViewById(R.id.img_animation);
 		
 		bootAnimationImageView = (ImageView) findViewById(R.id.img_animation);
-		/*bootAnimationImageView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (bootAnimationGenerator != null) {
-					bootAnimationGenerator.pushImage();
-				}
-			}
-		});*/
 		
 		Intent intent = getIntent();
 		

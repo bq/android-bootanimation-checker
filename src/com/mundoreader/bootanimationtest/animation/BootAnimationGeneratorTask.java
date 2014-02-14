@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 
 import com.mundoreader.bootanimationtest.R;
@@ -30,9 +31,7 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
     private DescParser descParser;
     private DescModel descModel;
     private CustomAnimationDrawable bootAnimation;
-    
-    private boolean imagePushed = false;
-    
+        
 	private ProgressDialog dialog;
     
     public BootAnimationGeneratorTask(AnimationActivity activity, String zipPath) {
@@ -43,13 +42,8 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
         bootAnimation = new CustomAnimationDrawable(){
             @Override
             public void onAnimationFinish() {
-            	if (!imagePushed) {
             		bootAnimation.stop();
                     bootAnimation.start();
-            	} else {
-            		bootAnimation.stop();
-            		imagePushed = false;
-            	}
             }
         };
         
@@ -103,7 +97,7 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
         
     	buildAnimationDrawable();
         
-        while (!success) {
+    	while (!success) {
         	for (int i = 0; i < descModel.getAnimationPartsCount(); i++) {
         		AnimationPart animationPart = descModel.getAnimationParts().get(i);
         		
@@ -122,17 +116,13 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
         		buildAnimationDrawable();
         		sampleSize++;
         	}
-        }
+    	}
         
     	return bootAnimation;
     }
     
     public int getAnimationDuration(int animationFps) {
     	return ((int) 1000 / animationFps);
-    }
-    
-    public void pushImage() {
-    	imagePushed = !imagePushed;
     }
     
     public DescModel getDescModel() {
@@ -160,8 +150,7 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
     		int i;
     		for(i = 0; i < files.length; i++) {
         		BitmapDrawable animation = createDrawable(files[i], sampleSize);
-        		//Drawable animation = Drawable.createFromPath(files[i].getAbsolutePath());
-        		bootAnimation.addFrame(animation.getCurrent(), animationDuration);
+    			bootAnimation.addFrame(animation, animationDuration);
         	}
     	} catch (OutOfMemoryError e) {
     		e.printStackTrace();
@@ -177,8 +166,8 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
 		BitmapFactory.Options options = new BitmapFactory.Options();
 		
 		options.inSampleSize = sampleSize;
-	    //options.inPurgeable = true;
-	    //options.inDither = true;
+	    options.inPurgeable = true;
+		options.inPreferredConfig = Bitmap.Config.RGB_565;
 	    options.inTempStorage = new byte[32768];
 		
 		Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
@@ -190,13 +179,8 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
 		bootAnimation = new CustomAnimationDrawable(){
             @Override
             public void onAnimationFinish() {
-            	if (!imagePushed) {
             		bootAnimation.stop();
                     bootAnimation.start();
-            	} else {
-            		bootAnimation.stop();
-            		imagePushed = false;
-            	}
             }
         };
 	}

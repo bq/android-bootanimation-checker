@@ -12,7 +12,6 @@ import android.text.TextUtils;
 
 public class DescParser {
 	
-	private String unzippedPath;
 	private List<AnimationPart> animationParts;
 	
 	public DescParser() {		

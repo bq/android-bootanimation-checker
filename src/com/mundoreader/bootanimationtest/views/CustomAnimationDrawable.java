@@ -6,6 +6,8 @@ import android.os.Handler;
 public class CustomAnimationDrawable extends AnimationDrawable {
 
 	private Handler mAnimationHandler;
+	
+	public void onAnimationFinish() {}
 
 	@Override
 	public void start() {
@@ -21,7 +23,6 @@ public class CustomAnimationDrawable extends AnimationDrawable {
 	}
 
 	public int getTotalDuration() {
-
 		int iDuration = 0;
 
 		for (int i = 0; i < this.getNumberOfFrames(); i++) {
@@ -30,6 +31,4 @@ public class CustomAnimationDrawable extends AnimationDrawable {
 
 		return iDuration;
 	}
-
-	public void onAnimationFinish() {}
 }

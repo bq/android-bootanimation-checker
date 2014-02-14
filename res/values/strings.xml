@@ -3,7 +3,6 @@
 
     <string name="app_name">BootAnimationTest</string>
     <string name="action_help">Help</string>
-    <string name="hello_world">Hello world!</string>
     <string name="animate">Animate</string>
     <string name="select_animation">Select animation</string>
     <string name="help">BootAnimation help</string>
