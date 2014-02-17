@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -53,6 +56,7 @@ public class MainActivity extends Activity {
             	if(data.hasExtra(FilePickerActivity.EXTRA_FILE_PATH)) {
                     List<File> files = (List<File>) data.getSerializableExtra(FilePickerActivity.EXTRA_FILE_PATH);                   
 
+                    // Get selected path to uncompress bootanimation package
                     if (files != null) {
                     	File file = files.get(0);
                     	if (file != null) {
@@ -65,5 +69,24 @@ public class MainActivity extends Activity {
             }
 		}
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_help:
+                Intent intent = new Intent(this, HelpActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
 

@@ -22,7 +22,6 @@ import android.widget.Toast;
 public class UnzipTask extends AsyncTask<String, Void, Boolean> {
 	
 	private AnimationActivity activity;
-	
 	private ProgressDialog dialog;
 	
 	public UnzipTask(AnimationActivity activity) {
@@ -43,7 +42,7 @@ public class UnzipTask extends AsyncTask<String, Void, Boolean> {
 
         File archive = new File(filePath);
         try {
-            ZipFile zipfile = new ZipFile(archive);
+        	ZipFile zipfile = new ZipFile(archive);
             for (Enumeration e = zipfile.entries(); e.hasMoreElements();) {
                 ZipEntry entry = (ZipEntry) e.nextElement();
                 unzipEntry(zipfile, entry, destinationPath);
@@ -57,11 +56,11 @@ public class UnzipTask extends AsyncTask<String, Void, Boolean> {
     
     @Override
     protected void onPostExecute(final Boolean success) {
-    	if (dialog.isShowing()) {
+    	if ((dialog != null) && ((dialog.isShowing()))) {
             dialog.dismiss();
         }
     	
-    	if (success) {
+    	if ((activity != null) && (success)) {
     		activity.startAnimation();
     	} else {
     		Toast.makeText(activity, R.string.e_unzipping, Toast.LENGTH_LONG).show();
@@ -69,14 +68,13 @@ public class UnzipTask extends AsyncTask<String, Void, Boolean> {
     }
 
     private void unzipEntry(ZipFile zipfile, ZipEntry entry, String outputDir) throws IOException {
-
-        if (entry.isDirectory()) {
+        if ((entry != null) && (entry.isDirectory())) {
             createDir(new File(outputDir, entry.getName()));
             return;
         }
 
         File outputFile = new File(outputDir, entry.getName());
-        if (!outputFile.getParentFile().exists()) {
+        if ((outputFile != null) && (!outputFile.getParentFile().exists())) {
             createDir(outputFile.getParentFile());
         }
 
@@ -86,13 +84,19 @@ public class UnzipTask extends AsyncTask<String, Void, Boolean> {
         try {
             IOUtils.copy(inputStream, outputStream);
         } finally {
-            outputStream.close();
-            inputStream.close();
+        	if ((outputStream != null) && (inputStream != null)) {
+        	    outputStream.close();
+                inputStream.close();
+        	}
         }
     }
 
     private void createDir(File dir) {
+    	if (dir == null) return;
+    	
         if (dir.exists()) return;
-        if (!dir.mkdirs()) throw new RuntimeException("Can not create dir " + dir);
+        if (!dir.mkdirs()) {
+        	throw new RuntimeException("Error creating folder");
+        }
     }
 }

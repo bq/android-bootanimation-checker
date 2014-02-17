@@ -60,6 +60,8 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
     
     @Override
     protected void onPreExecute() {
+    	if (dialog == null) return;
+    	
     	dialog.setMessage(activity.getString(R.string.generating_animation));
 		dialog.show();
     }
@@ -71,14 +73,16 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
     
     @Override
     protected void onPostExecute(final Boolean success) {
-    	if (dialog.isShowing()) {
+    	if ((dialog != null) && (dialog.isShowing())) {
             dialog.dismiss();
         }
     	
-    	if (success) {
-    		activity.onAsyncResponse(bootAnimation);
-    	} else {
-    		activity.onAsyncResponse(null);
+    	if (activity != null) {
+    		if (success) {
+        		activity.onAsyncResponse(bootAnimation);
+        	} else {
+        		activity.onAsyncResponse(null);
+        	}
     	}
     }
 
@@ -97,7 +101,13 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
         
     	buildAnimationDrawable();
         
+    	/*
+    	 * Because heap consumption problems, bitmaps are created inside a loop
+    	 * increasing it's sample size to reduce bitmap resolution until all images are
+    	 * stored with success
+    	 */
     	while (!success) {
+    		// Iterate over all animation parts of bootanimation folder
         	for (int i = 0; i < descModel.getAnimationPartsCount(); i++) {
         		AnimationPart animationPart = descModel.getAnimationParts().get(i);
         		
@@ -107,10 +117,12 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
             	
             	File[] files = animationFolder.listFiles();
             	
+            	// Build animation for current animation part
             	success = buildDrawableAnimation(files, animationDuration, sampleSize);
             	if (!success) break;
         	}
         	
+        	// If heap problems, increase sample size and built bitmaps again
         	if (!success) {
         		bootAnimation = null;
         		buildAnimationDrawable();
@@ -121,6 +133,7 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
     	return bootAnimation;
     }
     
+    // Calculate animation duration from provided fps readed from desc model
     public int getAnimationDuration(int animationFps) {
     	return ((int) 1000 / animationFps);
     }
@@ -141,9 +154,11 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
 		this.bootAnimation = bootAnimation;
 	}
 	
+	// Build animation from provided images
 	private boolean buildDrawableAnimation(File[] files, int animationDuration, int sampleSize) {
 		if ((files == null) || (bootAnimation == null)) return false;
 		
+		// Sort images array to build animation bitmaps with the correct order
 		Arrays.sort(files);
     	try {
     		
@@ -160,6 +175,7 @@ public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>
     	return true;
 	}
 	
+	// Build drawable with some configuration options
 	private BitmapDrawable createDrawable(File file, int sampleSize) throws OutOfMemoryError {
 		if ((activity == null) || (file == null) || (!file.exists())) return null;
 		

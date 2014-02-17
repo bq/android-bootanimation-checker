@@ -9,6 +9,7 @@ import java.util.List;
 import com.mundoreader.bootanimationtest.animation.AnimationPart;
 
 import android.text.TextUtils;
+import android.widget.Toast;
 
 public class DescParser {
 	
@@ -23,6 +24,14 @@ public class DescParser {
 		
 		return parse(file.getPath());
 	}
+	
+	/*
+	 * Parse desc model text file to get its data:
+	 * 	- Animation width
+	 *  - Animation height
+	 *  - Animation fps
+	 *  - Animation parts
+	 */
 	
 	private DescModel parse(String file) {
 		if (TextUtils.isEmpty(file)) return null;
@@ -54,7 +63,7 @@ public class DescParser {
 	        
 	        bufferedReader.close();
 	    } catch (Exception e) {
-	    	
+	    	e.printStackTrace();
 	    }
 	    
 	    descModel.setAnimationParts(animationParts);

@@ -23,6 +23,7 @@ import com.mundoreader.bootanimationtest.views.CustomAnimationDrawable;
 public class AnimationActivity extends Activity implements BootAnimationGeneratorAsyncResponse {
 	
 	public static final String ZIP_PATH = "com.mundoreader.bootanimationtest:ZIP_PATH";
+	// Path where unzipped files from bootanimation.zip will stored
 	public static final String UNZIPPED_PATH = Environment.getExternalStorageDirectory() + "/BootAnimationTest/";
 	
 	private ImageView bootAnimationImageView;
@@ -40,16 +41,17 @@ public class AnimationActivity extends Activity implements BootAnimationGenerato
 		
 		bootAnimationGenerator = BootAnimationGeneratorTask.getBootAnimationGenerator(this, zipPath);
 		
+		// Hide navigation bars
 		View decorView = getWindow().getDecorView();
-		int uiOptions =  View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LOW_PROFILE;
-		decorView.setSystemUiVisibility(uiOptions);
+		if (decorView != null) {
+			decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LOW_PROFILE);
+		}
 		
 		bootAnimationImageView = (ImageView) findViewById(R.id.img_animation);
-		
-		bootAnimationImageView = (ImageView) findViewById(R.id.img_animation);
-		
+				
 		Intent intent = getIntent();
 		
+		// Get path where bootanimation.zip is stored
 		if (intent != null) {
 			String path = intent.getStringExtra(AnimationActivity.ZIP_PATH);
 			if (!TextUtils.isEmpty(path)) {
@@ -57,7 +59,9 @@ public class AnimationActivity extends Activity implements BootAnimationGenerato
 			}
 		}
 		
+		// Delete previous unzipped files
 		Utils.deleteDirectory(new File(UNZIPPED_PATH));
+		// Unzip bootanimation.zip
 		new UnzipTask(this).execute(zipPath, UNZIPPED_PATH);
 	}
 	
@@ -65,6 +69,7 @@ public class AnimationActivity extends Activity implements BootAnimationGenerato
 	public void onStop() {
 		super.onStop();
 		
+		// Free memory
 		bootAnimation = null;
 		System.gc();
 	}
@@ -79,6 +84,7 @@ public class AnimationActivity extends Activity implements BootAnimationGenerato
 		}
 	}
 	
+	// Callback called from BootAnimationGenerator when animation is built
 	public void onAsyncResponse(CustomAnimationDrawable animation) {
 		if (animation == null) {
 			Toast.makeText(this, R.string.e_generating, Toast.LENGTH_LONG).show();

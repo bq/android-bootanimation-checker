@@ -7,6 +7,7 @@ public class CustomAnimationDrawable extends AnimationDrawable {
 
 	private Handler mAnimationHandler;
 	
+	// Callback to check when animation stops
 	public void onAnimationFinish() {}
 
 	@Override
@@ -15,7 +16,6 @@ public class CustomAnimationDrawable extends AnimationDrawable {
     
 		mAnimationHandler = new Handler();
 		mAnimationHandler.postDelayed(new Runnable() {
-
 			public void run() {
 				onAnimationFinish();
 			}
@@ -23,12 +23,12 @@ public class CustomAnimationDrawable extends AnimationDrawable {
 	}
 
 	public int getTotalDuration() {
-		int iDuration = 0;
+		int duration = 0;
 
 		for (int i = 0; i < this.getNumberOfFrames(); i++) {
-			iDuration += this.getDuration(i);
+			duration += this.getDuration(i);
 		}
 
-		return iDuration;
+		return duration;
 	}
 }
