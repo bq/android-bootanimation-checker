@@ -1,5 +1,3 @@
-Android bootanimation checker is an Android application to test bootanimations.
-
 ==========
 android-bootanimation-checker
 ==========
