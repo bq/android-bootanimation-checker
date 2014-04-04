@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BootAnimationTest</string>
+    <string name="app_name">Bootanimation</string>
     <string name="action_help">Help</string>
     <string name="animate">Animate</string>
     <string name="select_animation">Select animation</string>
-    <string name="help"><b><i>BootAnimation help</i></b> \n\n\n Put bootanimation.zip inside sdcard \n\n Push \"Select animation button\" and select it from sdcard file list</string>
+    <string name="help">1.- Put bootanimation.zip inside sdcard\n\n2.- Push \"Upload your .zip\" and select it from sdcard file list</string>
     <string name="unzipping_message">Unzipping bootanimation.zip</string>
     <string name="generating_animation">Generating animation</string>
     
     <string name="e_unzipping">Error unzipping animation.zip</string>
     <string name="e_generating">Error generating animation</string>
+    
+    <string name="how">How?</string>
 
 </resources>

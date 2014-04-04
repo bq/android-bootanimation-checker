@@ -8,17 +8,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <ImageView 
-        android:id="@+id/img_animation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
     <Button
         android:id="@+id/btn_select_animation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/upload_layout_dimen"
+        android:layout_height="@dimen/upload_layout_dimen"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/select_animation" />
+        android:background="@drawable/drawable_upload" />
 
 </RelativeLayout>
