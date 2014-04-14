@@ -1,4 +1,4 @@
-package com.mundoreader.bootanimationtest.util;
+package com.bq.bootanimationtest.util;
 
 import java.io.File;
 

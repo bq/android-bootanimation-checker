@@ -1,4 +1,4 @@
-package com.mundoreader.bootanimationtest.animation;
+package com.bq.bootanimationtest.animation;
 
 import java.io.File;
 import java.util.Arrays;
@@ -8,15 +8,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 
-import com.mundoreader.bootanimationtest.R;
-import com.mundoreader.bootanimationtest.activities.AnimationActivity;
-import com.mundoreader.bootanimationtest.parser.DescModel;
-import com.mundoreader.bootanimationtest.parser.DescParser;
-import com.mundoreader.bootanimationtest.util.Utils;
-import com.mundoreader.bootanimationtest.views.CustomAnimationDrawable;
+import com.bq.bootanimation.R;
+import com.bq.bootanimationtest.activities.AnimationActivity;
+import com.bq.bootanimationtest.parser.DescModel;
+import com.bq.bootanimationtest.parser.DescParser;
+import com.bq.bootanimationtest.util.Utils;
+import com.bq.bootanimationtest.views.CustomAnimationDrawable;
 
 public class BootAnimationGeneratorTask extends AsyncTask<String, Void, Boolean>{
 	

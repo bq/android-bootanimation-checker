@@ -1,4 +1,4 @@
-package com.mundoreader.bootanimationtest.animation;
+package com.bq.bootanimationtest.animation;
 
 public class AnimationPart {
 	

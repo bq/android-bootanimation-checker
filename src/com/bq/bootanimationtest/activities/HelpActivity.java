@@ -1,10 +1,9 @@
-package com.mundoreader.bootanimationtest.activities;
-
-import com.mundoreader.bootanimationtest.R;
-import com.mundoreader.bootanimationtest.R.layout;
+package com.bq.bootanimationtest.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.bq.bootanimation.R;
 
 public class HelpActivity extends Activity {
 	

@@ -1,4 +1,4 @@
-package com.mundoreader.bootanimationtest.views;
+package com.bq.bootanimationtest.views;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;

@@ -1,4 +1,4 @@
-package com.mundoreader.bootanimationtest.activities;
+package com.bq.bootanimationtest.activities;
 
 import java.io.File;
 import java.util.List;
@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.bq.bootanimation.R;
 import com.coderplus.filepicker.FilePickerActivity;
-import com.mundoreader.bootanimationtest.R;
 
 public class MainActivity extends Activity {
 	

@@ -1,4 +1,4 @@
-package com.mundoreader.bootanimationtest.animation;
+package com.bq.bootanimationtest.animation;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -11,13 +11,12 @@ import java.util.zip.ZipFile;
 
 import org.apache.commons.io.IOUtils;
 
-import com.mundoreader.bootanimationtest.R;
-import com.mundoreader.bootanimationtest.R.string;
-import com.mundoreader.bootanimationtest.activities.AnimationActivity;
-
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.bq.bootanimation.R;
+import com.bq.bootanimationtest.activities.AnimationActivity;
 
 public class UnzipTask extends AsyncTask<String, Void, Boolean> {
 	

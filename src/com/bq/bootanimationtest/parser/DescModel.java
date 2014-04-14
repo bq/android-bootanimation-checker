@@ -1,9 +1,9 @@
-package com.mundoreader.bootanimationtest.parser;
+package com.bq.bootanimationtest.parser;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mundoreader.bootanimationtest.animation.AnimationPart;
+import com.bq.bootanimationtest.animation.AnimationPart;
 
 public class DescModel {
 	

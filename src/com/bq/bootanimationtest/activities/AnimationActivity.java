@@ -1,11 +1,9 @@
-package com.mundoreader.bootanimationtest.activities;
+package com.bq.bootanimationtest.activities;
 
 import java.io.File;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -13,12 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.mundoreader.bootanimationtest.R;
-import com.mundoreader.bootanimationtest.animation.BootAnimationGeneratorTask;
-import com.mundoreader.bootanimationtest.animation.BootAnimationGeneratorTask.BootAnimationGeneratorAsyncResponse;
-import com.mundoreader.bootanimationtest.animation.UnzipTask;
-import com.mundoreader.bootanimationtest.util.Utils;
-import com.mundoreader.bootanimationtest.views.CustomAnimationDrawable;
+import com.bq.bootanimation.R;
+import com.bq.bootanimationtest.animation.BootAnimationGeneratorTask;
+import com.bq.bootanimationtest.animation.BootAnimationGeneratorTask.BootAnimationGeneratorAsyncResponse;
+import com.bq.bootanimationtest.animation.UnzipTask;
+import com.bq.bootanimationtest.util.Utils;
+import com.bq.bootanimationtest.views.CustomAnimationDrawable;
 
 public class AnimationActivity extends Activity implements BootAnimationGeneratorAsyncResponse {
 	
