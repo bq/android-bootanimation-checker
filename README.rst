@@ -59,6 +59,11 @@ Requirements
  	0 defines a pause
  	part1 is the folder for the second animation part.
 
+Dependencies
+=======
+
+This project depends on android-file-folder-picker library http://code.google.com/p/android-file-folder-picker/
+
 License
 =======
 
